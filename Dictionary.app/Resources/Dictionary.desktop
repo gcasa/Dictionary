@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Categories=X-GNUstep;
+Name=Dictionary
+StartupWMClass=Dictionary
+Comment=A NeXT-style dictionary browser using dict.
+Exec=/usr/GNUstep/System/Tools/openapp Dictionary

@@ -1,0 +1,16 @@
+{
+  ApplicationName = Dictionary;
+  ApplicationDescription = "A NeXT-style dictionary browser using dict.";
+  NSExecutable = Dictionary;
+  NSMainNibFile = "";
+  NSServices = (
+    {
+      NSMenuItem = {
+        default = "Look Up in Dictionary";
+      };
+      NSMessage = lookupSelection;
+      NSPortName = Dictionary;
+      NSSendTypes = (NSStringPboardType);
+    }
+  );
+}
