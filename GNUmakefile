@@ -8,7 +8,10 @@ Dictionary_OBJC_FILES = \
 	DictionaryClient.m \
 	IllustrationView.m
 
+Dictionary_APPLICATION_ICON = Dictionary.tiff
+
 Dictionary_RESOURCE_FILES = \
+	Dictionary.tiff \
 	Resources/README-Drawings.md
 
 include $(GNUSTEP_MAKEFILES)/application.make

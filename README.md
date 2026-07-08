@@ -3,10 +3,9 @@
 Dictionary is a small GNUstep/AppKit dictionary browser in the style of classic
 NeXT desktop utilities. It looks up words with the local `dict` command, shows
 the returned definition, and displays a matching black-and-white illustration
-when one is bundled with the app.
+when one is bundled with the app or can be found from Wikipedia.
 
-If no matching drawing is found, the app generates simple pen-style fallback
-line art from the definition text.
+If no matching illustration is found, the illustration pane is left blank.
 
 ## Features
 
@@ -17,8 +16,8 @@ line art from the definition text.
   `Services > Look Up in Dictionary` can look up selected text from another
   application.
 - Optional bundled drawings under `Resources/Drawings/`.
-- Generated fallback illustrations for plant, animal, landscape, and generic
-  object definitions.
+- Wikipedia thumbnail lookup with a monochrome edge conversion when no bundled
+  drawing is present.
 
 ## Requirements
 
@@ -84,7 +83,9 @@ text.
 
 ## Drawings
 
-The app checks for bundled drawings before drawing a generated fallback image.
+The app checks for bundled drawings before trying to fetch a Wikipedia
+thumbnail and convert it to a monochrome drawing. If neither source has an
+illustration, no drawing is shown.
 Place drawing files in:
 
 ```text
@@ -115,10 +116,11 @@ public-domain line art.
 ## Source Layout
 
 - `main.m` sets up `NSApplication` and registers the services provider.
-- `AppDelegate.m` builds the interface, handles lookups, and manages services.
+- `AppDelegate.m` builds the interface, handles lookups, converts Wikipedia
+  thumbnails to monochrome drawings, and manages services.
 - `DictionaryClient.m` runs `/usr/bin/dict`, normalizes lookup tokens, and
   derives drawing candidates from definitions.
-- `IllustrationView.m` renders bundled images or generated fallback line art.
+- `IllustrationView.m` renders found illustrations.
 - `DictionaryInfo.plist` contains application metadata and Services
   registration.
 - `GNUmakefile` defines the GNUstep application target.

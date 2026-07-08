@@ -1,7 +1,7 @@
 # Dictionary Drawings
 
-The app looks for bundled black-and-white drawings before it generates its
-fallback pen-style illustration.
+The app looks for bundled black-and-white drawings before trying to fetch a
+Wikipedia thumbnail and convert it to a monochrome drawing.
 
 Place image files in:
 
@@ -23,7 +23,11 @@ Lookup order:
    hyphens.
 2. Cross-reference terms found in the `dict` output inside braces, such as
    `{Test tube}` becoming `test-tube`.
-3. Generated black-and-white line art if no bundled drawing exists.
+3. A Wikipedia thumbnail converted to monochrome line art if no bundled drawing
+   exists.
+
+If no bundled or Wikipedia illustration is found, the app does not draw an
+illustration.
 
 Good drawing sources are public-domain dictionary and encyclopedia scans,
 especially Webster-era plate art from Internet Archive, Wikimedia Commons

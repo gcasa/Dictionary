@@ -2,6 +2,7 @@
   ApplicationName = Dictionary;
   ApplicationDescription = "A NeXT-style dictionary browser using dict.";
   NSExecutable = Dictionary;
+  NSIcon = "Dictionary.tiff";
   NSMainNibFile = "";
   NSServices = (
     {
