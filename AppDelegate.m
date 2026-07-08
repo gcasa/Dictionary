@@ -29,7 +29,7 @@
 
 - (void)buildMenu
 {
-  NSMenu *mainMenu = [[[NSMenu alloc] initWithTitle: @"MainMenu"] autorelease];
+  NSMenu *mainMenu = [[[NSMenu alloc] initWithTitle: @"Dictionary"] autorelease];
   NSMenuItem *appItem = [[[NSMenuItem alloc] initWithTitle: @"Dictionary"
                                                     action: NULL
                                              keyEquivalent: @""] autorelease];
