@@ -85,7 +85,7 @@
 
 - (void)buildInterface
 {
-  NSRect frame = NSMakeRect(120, 120, 760, 500);
+  NSRect frame = NSMakeRect(120, 120, 1140, 750);
   NSView *content;
   NSButton *button;
   NSScrollView *scroll;
@@ -104,54 +104,55 @@
 
   content = [_window contentView];
 
-  label = [[[NSTextField alloc] initWithFrame: NSMakeRect(18, 456, 48, 22)] autorelease];
+  label = [[[NSTextField alloc] initWithFrame: NSMakeRect(18, 706, 48, 22)] autorelease];
   [label setStringValue: @"Word:"];
   [label setBezeled: NO];
   [label setDrawsBackground: NO];
   [label setEditable: NO];
   [label setSelectable: NO];
+  [label setAutoresizingMask: NSViewMinYMargin];
   [content addSubview: label];
 
-  _searchField = [[NSTextField alloc] initWithFrame: NSMakeRect(68, 454, 486, 26)];
+  _searchField = [[NSTextField alloc] initWithFrame: NSMakeRect(68, 704, 866, 26)];
   [_searchField setTarget: self];
   [_searchField setAction: @selector(lookup:)];
-  [_searchField setAutoresizingMask: NSViewWidthSizable];
+  [_searchField setAutoresizingMask: NSViewWidthSizable | NSViewMinYMargin];
   [content addSubview: _searchField];
 
-  button = [[[NSButton alloc] initWithFrame: NSMakeRect(566, 454, 82, 26)] autorelease];
+  button = [[[NSButton alloc] initWithFrame: NSMakeRect(946, 704, 82, 26)] autorelease];
   [button setTitle: @"Look Up"];
   [button setBezelStyle: NSRoundedBezelStyle];
   [button setTarget: self];
   [button setAction: @selector(lookup:)];
-  [button setAutoresizingMask: NSViewMinXMargin];
+  [button setAutoresizingMask: NSViewMinXMargin | NSViewMinYMargin];
   [content addSubview: button];
 
-  _statusField = [[NSTextField alloc] initWithFrame: NSMakeRect(18, 426, 730, 20)];
+  _statusField = [[NSTextField alloc] initWithFrame: NSMakeRect(18, 676, 1110, 20)];
   [_statusField setStringValue: @"Enter a word, or use Services > Look Up in Dictionary from another application."];
   [_statusField setBezeled: NO];
   [_statusField setDrawsBackground: NO];
   [_statusField setEditable: NO];
   [_statusField setSelectable: NO];
   [_statusField setFont: [NSFont systemFontOfSize: 11.0]];
-  [_statusField setAutoresizingMask: NSViewWidthSizable];
+  [_statusField setAutoresizingMask: NSViewWidthSizable | NSViewMinYMargin];
   [content addSubview: _statusField];
 
-  _illustrationView = [[IllustrationView alloc] initWithFrame: NSMakeRect(18, 58, 250, 350)];
+  _illustrationView = [[IllustrationView alloc] initWithFrame: NSMakeRect(18, 58, 250, 600)];
   [_illustrationView setAutoresizingMask: NSViewMaxXMargin | NSViewHeightSizable];
   [content addSubview: _illustrationView];
 
-  divider = [[[NSBox alloc] initWithFrame: NSMakeRect(282, 58, 1, 350)] autorelease];
+  divider = [[[NSBox alloc] initWithFrame: NSMakeRect(282, 58, 1, 600)] autorelease];
   [divider setBoxType: NSBoxSeparator];
   [divider setAutoresizingMask: NSViewMaxXMargin | NSViewHeightSizable];
   [content addSubview: divider];
 
-  scroll = [[[NSScrollView alloc] initWithFrame: NSMakeRect(296, 58, 446, 350)] autorelease];
+  scroll = [[[NSScrollView alloc] initWithFrame: NSMakeRect(296, 58, 826, 600)] autorelease];
   [scroll setHasVerticalScroller: YES];
   [scroll setHasHorizontalScroller: NO];
   [scroll setBorderType: NSBezelBorder];
   [scroll setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable];
 
-  _definitionView = [[NSTextView alloc] initWithFrame: NSMakeRect(0, 0, 430, 350)];
+  _definitionView = [[NSTextView alloc] initWithFrame: NSMakeRect(0, 0, 810, 600)];
   [_definitionView setEditable: NO];
   [_definitionView setSelectable: YES];
   [_definitionView setFont: [NSFont userFixedPitchFontOfSize: 12.0]];
@@ -159,6 +160,7 @@
   [_definitionView setBackgroundColor: [NSColor whiteColor]];
   [_definitionView setTextColor: [NSColor blackColor]];
   [_definitionView setString: @"No word looked up yet."];
+  [_definitionView setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable];
   [scroll setDocumentView: _definitionView];
   [content addSubview: scroll];
 }
